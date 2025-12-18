@@ -2063,7 +2063,7 @@ def Build_Market_StockList(bourse = True, farabourse = True, payeh = True, detai
         print('Choose at least one market!')
         return
     start_time = time.time()
-    http = urllib3.PoolManager()
+    http = urllib3.PoolManager(cert_reqs='CERT_NONE')
     look_up = pd.DataFrame({'Ticker':[],'Name':[],'WEB-ID':[],'Market':[]})
     # --------------------------------------------------------------------------------------------------
     if(bourse):
@@ -2915,3 +2915,4 @@ def Get_ShareHoldersInfo(ticker = 'خودرو'):
     df_sh['Market'] = market
     df_sh.set_index(['Ticker','Market','Name'], inplace=True)
     return df_sh
+
